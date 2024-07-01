@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>Lista de Tarefas</h2>
+
+<input type="text" id="myInput" placeholder="Texto do item">
+
+<br><br>
+
+<label>
+  <input type="radio" name="cores" value="red"> Vermelho
+</label>
+<label>
+  <input type="radio" name="cores" value="green"> Verde
+</label>
+<label>
+  <input type="radio" name="cores" value="blue"> Azul
+</label>
+
+<br><br>
+
+<button id="addBtn">Adicionar Item</button>
+
+<ul id="myList">
+  <li>Café</li>
+  <li>Chá</li>
+</ul>
+
+<script>
+document.getElementById("addBtn").addEventListener("click", function() {
+    var li = document.createElement("li");
+    var inputValue = document.getElementById("myInput").value;
+    var textNode = document.createTextNode(inputValue);
+
+    li.appendChild(textNode);
+
+    var cor = document.querySelector('input[name="cores"]:checked').value;
+    li.style.color = cor;
+
+    if (inputValue === '') {
+      alert("Você deve escrever algo!");
+    } else {
+      document.getElementById("myList").appendChild(li);
+    }
+    document.getElementById("myInput").value = "";
+});
+</script>
+
+</body>
+</html>

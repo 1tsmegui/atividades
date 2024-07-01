@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculadora de Média - Usando prompt()</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+    }
+
+    .container {
+      max-width: 400px;
+      margin: 50px auto;
+      padding: 20px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    p {
+      font-size: 18px;
+    }
+
+    span {
+      font-weight: bold;
+    }
+
+    .aprovado {
+      color: blue;
+    }
+
+    .reprovado {
+      color: red;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Calculadora de Média - Usando prompt()</h2>
+    <button onclick="calcularMediaPrompt()">Calcular Média</button>
+    <br><br>
+    <p>Média: <span id="media"></span></p>
+    <p>Situação: <span id="situacao"></span></p>
+  </div>
+  
+  <script>
+    function calcularMediaPrompt() {
+      
+      var nota1 = parseFloat(prompt("Digite a nota 1:"));
+      var nota2 = parseFloat(prompt("Digite a nota 2:"));
+
+    
+      if (isNaN(nota1) || isNaN(nota2)) {
+        alert("Por favor, digite valores numéricos válidos.");
+        return;
+      }
+
+      var media = (nota1 + nota2) / 2;
+
+      var mediaSpan = document.getElementById('media');
+      mediaSpan.innerHTML = media.toFixed(1);
+
+      var situacaoSpan = document.getElementById('situacao');
+      if (media >= 6) {
+        situacaoSpan.innerHTML = 'APROVADO';
+        situacaoSpan.className = 'aprovado'; 
+      } else {
+        situacaoSpan.innerHTML = 'REPROVADO';
+        situacaoSpan.className = 'reprovado'; 
+      }
+    }
+  </script>
+</body>
+</html>
